@@ -4,7 +4,7 @@
 #
 Name     : libnetfilter_queue
 Version  : 1.0.2
-Release  : 3
+Release  : 4
 URL      : http://www.netfilter.org/projects/libnetfilter_queue/files/libnetfilter_queue-1.0.2.tar.bz2
 Source0  : http://www.netfilter.org/projects/libnetfilter_queue/files/libnetfilter_queue-1.0.2.tar.bz2
 Summary  : netfilter userspace packet queueing library
