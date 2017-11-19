@@ -1,11 +1,9 @@
-libnetfilter_queue.so.1:checksum
-libnetfilter_queue.so.1:checksum_tcpudp_ipv4
-libnetfilter_queue.so.1:checksum_tcpudp_ipv6
 libnetfilter_queue.so.1:nfq_bind_pf
 libnetfilter_queue.so.1:nfq_close
 libnetfilter_queue.so.1:nfq_create_queue
 libnetfilter_queue.so.1:nfq_destroy_queue
 libnetfilter_queue.so.1:nfq_fd
+libnetfilter_queue.so.1:nfq_get_gid
 libnetfilter_queue.so.1:nfq_get_indev
 libnetfilter_queue.so.1:nfq_get_indev_name
 libnetfilter_queue.so.1:nfq_get_msg_packet_hdr
@@ -18,7 +16,9 @@ libnetfilter_queue.so.1:nfq_get_physindev
 libnetfilter_queue.so.1:nfq_get_physindev_name
 libnetfilter_queue.so.1:nfq_get_physoutdev
 libnetfilter_queue.so.1:nfq_get_physoutdev_name
+libnetfilter_queue.so.1:nfq_get_secctx
 libnetfilter_queue.so.1:nfq_get_timestamp
+libnetfilter_queue.so.1:nfq_get_uid
 libnetfilter_queue.so.1:nfq_handle_packet
 libnetfilter_queue.so.1:nfq_ip6_get_hdr
 libnetfilter_queue.so.1:nfq_ip6_set_transport_header
