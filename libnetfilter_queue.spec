@@ -6,7 +6,7 @@
 #
 Name     : libnetfilter_queue
 Version  : 1.0.3
-Release  : 7
+Release  : 8
 URL      : http://www.netfilter.org/projects/libnetfilter_queue/files/libnetfilter_queue-1.0.3.tar.bz2
 Source0  : http://www.netfilter.org/projects/libnetfilter_queue/files/libnetfilter_queue-1.0.3.tar.bz2
 Source99 : http://www.netfilter.org/projects/libnetfilter_queue/files/libnetfilter_queue-1.0.3.tar.bz2.sig
