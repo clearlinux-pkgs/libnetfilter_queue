@@ -1,5 +1,5 @@
 PKG_NAME := libnetfilter_queue
-URL = http://www.netfilter.org/projects/libnetfilter_queue/files/libnetfilter_queue-1.0.3.tar.bz2
-
+URL = https://www.netfilter.org/pub/libnetfilter_queue/libnetfilter_queue-1.0.5.tar.bz2
+ARCHIVES = 
 
 include ../common/Makefile.common

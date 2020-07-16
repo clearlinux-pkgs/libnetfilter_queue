@@ -5,15 +5,16 @@
 # Source0 file verified with key 0xAB4655A126D292E4 (coreteam@netfilter.org)
 #
 Name     : libnetfilter_queue
-Version  : 1.0.3
-Release  : 10
-URL      : http://www.netfilter.org/projects/libnetfilter_queue/files/libnetfilter_queue-1.0.3.tar.bz2
-Source0  : http://www.netfilter.org/projects/libnetfilter_queue/files/libnetfilter_queue-1.0.3.tar.bz2
-Source99 : http://www.netfilter.org/projects/libnetfilter_queue/files/libnetfilter_queue-1.0.3.tar.bz2.sig
+Version  : 1.0.5
+Release  : 11
+URL      : https://www.netfilter.org/pub/libnetfilter_queue/libnetfilter_queue-1.0.5.tar.bz2
+Source0  : https://www.netfilter.org/pub/libnetfilter_queue/libnetfilter_queue-1.0.5.tar.bz2
+Source1  : https://www.netfilter.org/pub/libnetfilter_queue/libnetfilter_queue-1.0.5.tar.bz2.sig
 Summary  : netfilter userspace packet queueing library
 Group    : Development/Tools
 License  : GPL-2.0
-Requires: libnetfilter_queue-lib
+Requires: libnetfilter_queue-lib = %{version}-%{release}
+Requires: libnetfilter_queue-license = %{version}-%{release}
 BuildRequires : pkgconfig(libmnl)
 BuildRequires : pkgconfig(libnfnetlink)
 
@@ -23,8 +24,9 @@ No detailed description available
 %package dev
 Summary: dev components for the libnetfilter_queue package.
 Group: Development
-Requires: libnetfilter_queue-lib
-Provides: libnetfilter_queue-devel
+Requires: libnetfilter_queue-lib = %{version}-%{release}
+Provides: libnetfilter_queue-devel = %{version}-%{release}
+Requires: libnetfilter_queue = %{version}-%{release}
 
 %description dev
 dev components for the libnetfilter_queue package.
@@ -33,33 +35,53 @@ dev components for the libnetfilter_queue package.
 %package lib
 Summary: lib components for the libnetfilter_queue package.
 Group: Libraries
+Requires: libnetfilter_queue-license = %{version}-%{release}
 
 %description lib
 lib components for the libnetfilter_queue package.
 
 
+%package license
+Summary: license components for the libnetfilter_queue package.
+Group: Default
+
+%description license
+license components for the libnetfilter_queue package.
+
+
 %prep
-%setup -q -n libnetfilter_queue-1.0.3
+%setup -q -n libnetfilter_queue-1.0.5
+cd %{_builddir}/libnetfilter_queue-1.0.5
 
 %build
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
-export LANG=C
-export SOURCE_DATE_EPOCH=1511114470
+export LANG=C.UTF-8
+export SOURCE_DATE_EPOCH=1594870555
+export GCC_IGNORE_WERROR=1
+export AR=gcc-ar
+export RANLIB=gcc-ranlib
+export NM=gcc-nm
+export CFLAGS="$CFLAGS -O3 -ffat-lto-objects -flto=4 "
+export FCFLAGS="$FFLAGS -O3 -ffat-lto-objects -flto=4 "
+export FFLAGS="$FFLAGS -O3 -ffat-lto-objects -flto=4 "
+export CXXFLAGS="$CXXFLAGS -O3 -ffat-lto-objects -flto=4 "
 %configure --disable-static
 make  %{?_smp_mflags}
 
 %check
-export LANG=C
+export LANG=C.UTF-8
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 make VERBOSE=1 V=1 %{?_smp_mflags} check
 
 %install
-export SOURCE_DATE_EPOCH=1511114470
+export SOURCE_DATE_EPOCH=1594870555
 rm -rf %{buildroot}
+mkdir -p %{buildroot}/usr/share/package-licenses/libnetfilter_queue
+cp %{_builddir}/libnetfilter_queue-1.0.5/COPYING %{buildroot}/usr/share/package-licenses/libnetfilter_queue/075d599585584bb0e4b526f5c40cb6b17e0da35a
 %make_install
 
 %files
@@ -80,4 +102,8 @@ rm -rf %{buildroot}
 %files lib
 %defattr(-,root,root,-)
 /usr/lib64/libnetfilter_queue.so.1
-/usr/lib64/libnetfilter_queue.so.1.4.0
+/usr/lib64/libnetfilter_queue.so.1.5.0
+
+%files license
+%defattr(0644,root,root,0755)
+/usr/share/package-licenses/libnetfilter_queue/075d599585584bb0e4b526f5c40cb6b17e0da35a
